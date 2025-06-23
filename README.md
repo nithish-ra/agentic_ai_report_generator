@@ -51,10 +51,13 @@ Then fill in your real credentials:
 
 env
 AZURE_API_KEY=your-azure-api-key
+
 AZURE_ENDPOINT=https://your-azure-endpoint
+
 AZURE_DEPLOYMENT_NAME=your-model-deployment-name
 
 SENDER_EMAIL=your-email@gmail.com
+
 SENDER_PASSWORD=your-app-password
 
 ## Run the App
