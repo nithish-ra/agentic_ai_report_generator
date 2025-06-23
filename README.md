@@ -23,13 +23,21 @@ A smart Flask web application that generates professional reports using Azure Op
 ## 🏗️ Folder Structure
 
 ai-report-generator/
+
 ├── app.py # Main Flask app logic
+
 ├── templates/
+
 │ └── index.html # Frontend UI (HTML form)
+
 ├── .env # Sensitive credentials (ignored in Git)
+
 ├── .env.example # Template for your environment config
+
 ├── .gitignore # Git ignore rules
+
 └── README.md # This file
+
 
 
 ---
@@ -50,6 +58,7 @@ cp .env.example .env
 Then fill in your real credentials:
 
 env
+
 AZURE_API_KEY=your-azure-api-key
 
 AZURE_ENDPOINT=https://your-azure-endpoint
