@@ -16,7 +16,7 @@ A smart Flask web application that generates professional reports using Azure Op
 
 ## 🖼️ Screenshot
 
-![App Screenshot](https://images/Screenshot 2025-06-23 141408.png.com)
+![App Screenshot](https://github.com/nithish-ra/agentic_ai_report_generator/tree/main/images)
 
 ---
 
@@ -44,14 +44,12 @@ ai-report-generator/
 
 ---
 
-3. Create a .env File
+## Create a .env File
 Duplicate the .env.example file:
 cp .env.example .env
 Then fill in your real credentials:
 
 env
-Copy
-Edit
 AZURE_API_KEY=your-azure-api-key
 AZURE_ENDPOINT=https://your-azure-endpoint
 AZURE_DEPLOYMENT_NAME=your-model-deployment-name
@@ -59,7 +57,7 @@ AZURE_DEPLOYMENT_NAME=your-model-deployment-name
 SENDER_EMAIL=your-email@gmail.com
 SENDER_PASSWORD=your-app-password
 
-4. Run the App
+## Run the App
 python app.py
 Open your browser and visit:
 http://127.0.0.1:5000
