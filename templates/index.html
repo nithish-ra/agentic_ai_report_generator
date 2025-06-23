@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Report Generator</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f0f2f5, #dbeafe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #1d4ed8;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      background-color: #1d4ed8;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    .message {
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: green;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📄 AI Report Generator</h2>
+    <form id="reportForm">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" required>
+
+      <label for="topic">Report Topic</label>
+      <input type="text" id="topic" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required>
+
+      <button type="button" onclick="submitForm()">Generate Report</button>
+    </form>
+
+    <div id="responseMessage" class="message"></div>
+  </div>
+
+  <script>
+    function submitForm() {
+      const name = document.getElementById('name').value;
+      const topic = document.getElementById('topic').value;
+      const email = document.getElementById('email').value;
+      const messageDiv = document.getElementById('responseMessage');
+
+      if (!name || !topic || !email) {
+        messageDiv.innerHTML = "Please fill out all fields.";
+        messageDiv.classList.add("error");
+        return;
+      }
+
+      messageDiv.innerHTML = "⏳ Generating your report...";
+      messageDiv.classList.remove("error");
+
+      fetch('/generate-report', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({name, topic, email})
+      })
+      .then(response => response.text())
+      .then(data => {
+        messageDiv.innerHTML = `✅ ${data}`;
+      })
+      .catch(err => {
+        console.error(err);
+        messageDiv.innerHTML = "❌ Failed to generate report. Please try again.";
+        messageDiv.classList.add("error");
+      });
+    }
+  </script>
+</body>
+</html>
